@@ -13,9 +13,6 @@ function App() {
           <Route path='/shop'>
             <Shop />
           </Route>
-          <Route path='/about'>
-            <About />
-          </Route>
         </Switch>
       </Layout>
     </div>

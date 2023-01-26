@@ -11,9 +11,7 @@ export const Navigation = () => {
           <li>
             <Link to='/'>intro</Link>
           </li>
-          <li>
-            <Link to='/about'>about</Link>
-          </li>
+
           <li>
             <Link to='/shop'>shop</Link>
           </li>
