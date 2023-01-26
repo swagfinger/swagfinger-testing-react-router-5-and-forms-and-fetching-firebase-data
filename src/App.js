@@ -1,11 +1,11 @@
 import { Route, Switch } from 'react-router-dom'; //react router v5
-import { Navigation } from './layout/navigation';
 import { About, Shop, Intro } from './pages';
+import { Layout } from './layout';
 
 function App() {
   return (
     <div className='App'>
-      <Navigation>
+      <Layout>
         <Switch>
           <Route path='/' exact>
             <Intro />
@@ -17,7 +17,7 @@ function App() {
             <About />
           </Route>
         </Switch>
-      </Navigation>
+      </Layout>
     </div>
   );
 }

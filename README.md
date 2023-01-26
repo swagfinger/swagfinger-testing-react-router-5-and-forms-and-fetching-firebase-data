@@ -53,3 +53,24 @@ npm install --save react-router-dom@5
 
 - import Navigation.js into App (where the routes are) and wrap the <Navigation> component around the <Switch> routes
 - Navigation always showing because it wraps <Switch>
+
+## refactor
+
+- App.js - import Layout and wrap <Layout><Switch></Switch></Layout>
+- refactor Navigation into layout/Layout
+- <main>{props.children}</main> tag in Layout
+
+```js
+//Layout.js
+import classes from './Layout';
+import { Navigation } from './Navigation';
+
+export const Layout = ({ children }) => {
+  return (
+    <div>
+      <Navigation />
+      <main>{children}</main>
+    </div>
+  );
+};
+```
