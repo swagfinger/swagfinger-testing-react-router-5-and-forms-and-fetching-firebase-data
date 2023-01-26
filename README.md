@@ -33,22 +33,30 @@ npm install --save react-router-dom@5
 ```jsx
 // Navigation.js
 //navigation should look something like this:
-<header>
-  <div>logo</div>
-  <nav>
-    <ul>
-      <li>
-        <Link to='/'>intro</Link>
-      </li>
-      <li>
-        <Link to='/about'>about</Link>
-      </li>
-      <li>
-        <Link to='/shop'>shope</Link>
-      </li>
-    </ul>
-  </nav>
-</header>
+import React from 'react';
+import { Link } from 'react-router-dom';
+import classes from './Navigation.module.css';
+
+export const Navigation = () => {
+  return (
+    <header className={classes.header}>
+      <div className={classes.logo}>logo</div>
+      <nav>
+        <ul>
+          <li>
+            <Link to='/'>intro</Link>
+          </li>
+          <li>
+            <Link to='/about'>about</Link>
+          </li>
+          <li>
+            <Link to='/shop'>shop</Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
+};
 ```
 
 - import Navigation.js into App (where the routes are) and wrap the <Navigation> component around the <Switch> routes
@@ -73,4 +81,33 @@ export const Layout = ({ children }) => {
     </div>
   );
 };
+```
+
+```js
+//App.js
+import { Route, Switch } from 'react-router-dom'; //react router v5
+import { About, Shop, Intro } from './pages';
+import { Layout } from './layout';
+
+function App() {
+  return (
+    <div className='App'>
+      <Layout>
+        <Switch>
+          <Route path='/' exact>
+            <Intro />
+          </Route>
+          <Route path='/shop'>
+            <Shop />
+          </Route>
+          <Route path='/about'>
+            <About />
+          </Route>
+        </Switch>
+      </Layout>
+    </div>
+  );
+}
+
+export default App;
 ```
