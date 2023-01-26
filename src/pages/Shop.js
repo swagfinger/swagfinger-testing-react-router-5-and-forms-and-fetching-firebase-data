@@ -16,6 +16,7 @@ export const Shop = () => {
       }
     );
 
+    //redirect
     history.replace('/');
   };
 

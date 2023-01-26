@@ -1,3 +1,48 @@
+## react router 5 + fetching firebase data
+
+- this is a continuation from https://github.com/swagfinger/swagfinger-testing-react-router-5-and-forms.git
+- firebase project: swagfinger-form-capture
+- database: https://swagfinger-form-capture-default-rtdb.asia-southeast1.firebasedatabase.app/quotes.json
+
+- we have now saved data to database and we want to present it as a list
+- use useEffect to initially fetch data
+- process returned data from firebase - firebase returns an object with key value and inside is the data we want
+
+```js
+//fetch data
+useEffect(() => {
+  setIsLoading(true);
+
+  async function fetchData() {
+    const response = await fetch(
+      'https://swagfinger-form-capture-default-rtdb.asia-southeast1.firebasedatabase.app/quotes.json'
+    );
+
+    const data = await response.json;
+
+    //process returned data from firebase - firebase returns an object with key value and inside is the data we want
+    const savedEntries = [];
+
+    for (const key in data) {
+      const entry = {
+        id: key,
+        ...data[key],
+      };
+
+      savedEntries.push(entry);
+    }
+
+    setIsLoading(false);
+    setFetchedData(savedEntries);
+  }
+
+  fetchData();
+}, []);
+```
+
+- <!-- ------------------------------------------------------------------------------------------------ -->
+  <!-- ------------------------------------------------------------------------------------------------ -->
+
 ## react router 5 + forms + firebase
 
 - below is from 'NextJS & React - the complete guide by Maxmillian'
@@ -34,7 +79,7 @@ const collectedData = {
 - create a firebase project
 - use realtime database
 - security rules - test mode -> results in an url (api)
-- something like this: https://my-form-capture-rtdb.asia-southeast1.firebasedatabase.app/
+- something like this: https://swagfinger-form-capture-default-rtdb.asia-southeast1.firebasedatabase.app
 - and we add a database but trailing the above url with the name of the database
   eg. https://swagfinger-form-capture-default-rtdb.asia-southeast1.firebasedatabase.app/quotes.json
 - NOTE: THERE IS A .JSON AT THE END - WHEN WE ARE CREATING A DATABASE
