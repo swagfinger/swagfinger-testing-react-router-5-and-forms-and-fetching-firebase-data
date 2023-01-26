@@ -1,5 +1,5 @@
 import { Route, Switch } from 'react-router-dom'; //react router v5
-import { About, Shop, Intro } from './pages';
+import { Shop, Intro } from './pages';
 import { Layout } from './layout';
 
 function App() {

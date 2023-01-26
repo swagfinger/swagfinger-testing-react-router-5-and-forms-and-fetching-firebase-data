@@ -1,5 +1,8 @@
+import { useHistory } from 'react-router-dom';
 import { QuoteForm } from '../components/forms';
 export const Shop = () => {
+  const history = useHistory();
+
   const onAddQuoteHandler = (collectedData) => {
     console.log(collectedData);
     fetch(
@@ -11,7 +14,9 @@ export const Shop = () => {
           'Content-Type': 'application/json',
         },
       }
-    );
+    ).then(() => {
+      history.replace('/');
+    });
   };
 
   return (

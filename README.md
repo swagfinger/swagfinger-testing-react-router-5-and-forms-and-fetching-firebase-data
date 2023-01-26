@@ -70,6 +70,22 @@ const onAddQuoteHandler = (collectedData) => {
 <QuoteForm onAdd={onAddQuoteHandler} />;
 ```
 
+## navigating away
+
+- use useHistory hook from 'reeact-router-dom' which exposes some methods to us.
+- fetch returns a promise, so we can handle that with .then()
+- history has method: history.push() which will navigate away but then you can use browser back button...
+- and history.replace() which redirects without allowing to go back.
+
+```js
+import { useHistory } from 'react-router-dom';
+
+const history = useHistory();
+fetch(/*our code*/).then(() => {
+  history.replace('/');
+});
+```
+
 - <!-- ------------------------------------------------------------------------------------------------ -->
   <!-- ------------------------------------------------------------------------------------------------ -->
 
