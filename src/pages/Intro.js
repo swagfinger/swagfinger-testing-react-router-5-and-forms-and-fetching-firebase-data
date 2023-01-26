@@ -48,9 +48,9 @@ export const Intro = () => {
 
       <div>
         <ul>
-          {fetchedData.map(({ name, email }) => {
+          {fetchedData.map(({ name, email }, index) => {
             return (
-              <li>
+              <li key={index}>
                 {name} | {email}
               </li>
             );
